@@ -9,7 +9,5 @@ A Cloud Music player using Python Django-Framework
 #Add Album
 ![Screenshot](add_album.png)
 
-#Add Songs
-![Screenshot](add_song.png)
 
 NOTE:- Create a MySql Database with name  'geet'
