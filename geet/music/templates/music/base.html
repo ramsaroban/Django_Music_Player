@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+    <!--meta charset="UTF-8"-->
+
+    <title>{%block geet_title %}Geet Music {%endblock%}</title>
+    {% load staticfiles %}
+    <link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="header" id="myHeader">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+
+    <div class="container-fluid">
+        <!-- logo -->
+        <div class="navbar-header" >
+            <button type="button" class="navbar-toggle" data-toggle ="collapse" data-target="topVavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'music:index' %}">Geet</a>
+        </div>
+
+        <!-- icon on menu bar -->
+        <div class="collapse navbar-collapse" id="topNavBar">
+            <ul class="nav navbar-nav">
+                <li class="{% block albums_active %}{% endblock %}">
+                    <a class="" href="{% url 'music:index' %}">
+                    <span class="glyphicon glyphicon-cd" aria-hidden="true"></span>&nbsp;Album
+                    </a>
+                </li>
+                <li class="{% block songs_active %}{% endblock %}">
+                    <a href="{% url 'music:all-songs' %}">
+                    <span class="glyphicon glyphicon-music" aria-hidden="true"></span>&nbsp;Music
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Search bar-->
+            <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'music:index' %}">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="q" value="{{ request.GET.q }}">
+                </div>
+                <button type="submit" class="btn btn-default">Search</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="{% block add_active %}{% endblock %}">
+                    <a class="" href="{% url 'music:add-album' %}">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Add Album
+                    </a>
+                </li>
+                <li class="">
+                    <a class="" href="{% url 'music:index' %}">
+                    <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</nav>
+ </div>
+{% block base_body %}
+{%endblock%}
+<!--script style="" src="{% static 'music/header.js' %}"></script-->
+</body>
+</html>
